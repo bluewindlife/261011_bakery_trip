@@ -12,10 +12,15 @@ for (const [,url] of html.matchAll(/href="(https?:[^"]+)"/g)) new URL(url.replac
 const checks = [...html.matchAll(/data-check="([^"]+)"/g)].map(m => m[1]);
 assert.equal(checks.length,8); assert.equal(new Set(checks).size,8);
 const shops = [...html.matchAll(/data-shop="([^"]+)"/g)].map(m => m[1]);
-assert.deepEqual(shops,['shimoda','wakan','commen','kepo']);
+assert.deepEqual(shops,['shimoda','wakan','zono','commen']);
 const times = [...html.matchAll(/data-plan-time="(\d\d:\d\d)"/g)].map(m => m[1]);
 assert.deepEqual(times,[...times].sort(),'timeline must be ordered');
 assert(script.includes("timeZone: 'Asia/Tokyo'"));
 assert(!html.includes('アールグレイロイヤルミルクティー'),'stale September seasonal product');
 assert(!html.includes('data-shop="maru"'),'Sunday-closed shop is scheduled');
 console.log('Source checks passed: date, route order, links, anchors, checklist, October product.');
+
+assert.deepEqual([...html.matchAll(/data-candidate="([^"]+)"/g)].map(m=>m[1]),["kepo","higu","tsubasa","ryumon","zono","ken","maruichi"]);
+assert(html.includes("id=\"parking-zono\""));
+assert(!html.includes("9/22営業確認"));
+assert(!html.includes("ZONOへの新規寄り道は基本ルートに足さない"));
