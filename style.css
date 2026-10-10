@@ -73,3 +73,17 @@ body{font-size:16px}.plan-note,.detail-box li,.shop-reason,.candidate-card p{fon
 
 /* Retained photographic comparison */
 .quick-nav{grid-template-columns:repeat(5,minmax(0,1fr))}#candidates{scroll-margin-top:110px}.candidate-intro{font-size:.88rem;color:var(--muted);line-height:1.8;margin:0 0 18px}.candidate-card{min-width:0}.candidate-gallery{min-height:200px}.candidate-meta{gap:5px}.candidate-verdict{line-height:1.7}@media(min-width:680px){#candidates .candidate-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:379px){.quick-nav a{font-size:.61rem}}
+
+/* Official TANUKI sprite: show only the original bagel photo area. */
+.gallery.tanuki-gallery figure,.candidate-gallery.tanuki-gallery figure{height:auto;aspect-ratio:864/351}.tanuki-gallery img{height:auto;object-fit:initial;object-position:left top}.tanuki-gallery figcaption{font-size:.62rem}.tanuki-gallery{min-height:0}
+
+/* Four bakery overview: v1.3.0 */
+.route-overview{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem;margin:0 0 .7rem}
+.route-overview>div{border:1px solid var(--line);border-radius:14px;background:#fff;padding:1rem .8rem;display:flex;flex-direction:column;gap:.35rem}
+.route-overview span{color:var(--accent);font-weight:800;font-size:.78rem}
+.route-overview strong{font-size:1.05rem}
+.route-overview small,.route-overview-note{color:var(--muted);font-size:.78rem;line-height:1.7}
+.route-overview-note{margin:0 0 1rem}
+@media(max-width:600px){.route-overview{grid-template-columns:repeat(2,minmax(0,1fr))}.route-overview>div{padding:.85rem .7rem}}
+
+.gallery.tanuki-gallery{grid-template-columns:1fr}
