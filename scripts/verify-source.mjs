@@ -20,13 +20,24 @@ assert(!html.includes('アールグレイロイヤルミルクティー'),'stale
 assert(!html.includes('data-shop="maru"'),'Sunday-closed shop is scheduled');
 console.log('Source checks passed: date, route order, links, anchors, checklist, October product.');
 
-assert.deepEqual([...html.matchAll(/data-candidate="([^"]+)"/g)].map(m=>m[1]),["kepo","higu","tsubasa","ryumon","tanuki","zono","ken","maruichi"]);
+assert.deepEqual([...html.matchAll(/data-candidate="([^"]+)"/g)].map(m=>m[1]),["wakan","kepo","higu","tsubasa","ryumon","ken","maruichi"]);
 assert(html.includes("id=\"parking-zono\""));
 assert(!html.includes("9/22営業確認"));
 assert(!html.includes("ZONOへの新規寄り道は基本ルートに足さない"));
 
 assert(!html.includes("data-shop=\"wakan\""));
-assert(!html.includes("parking-wakan"));
+assert(html.includes("id=\"parking-wakan\""));
 assert(!html.includes("data-check=\"wakan\""));
 assert(!script.includes("和甘"));
 assert(html.includes("id=\"parking-tanuki\""));
+
+// v1.4: alternatives exclude scheduled shops, and a booked pickup must not be discarded by a clock cutoff.
+const candidates=[...html.matchAll(/data-candidate="([^"]+)"/g)].map(m=>m[1]);
+assert(!candidates.some(id=>shops.includes(id)));
+assert.equal((html.match(/class="candidate-time"/g)||[]).length,7);
+assert(html.includes('12時前後訪問・取り置き済み（ご本人確認）'));
+assert(html.includes('data-plan-time="12:00"'));
+assert(html.includes('data-plan-time="13:20"'));
+assert(!html.includes('取り置き未成立'));
+assert(!html.includes('12:00までに蔵前へ着けない見込みなら省略'));
+assert(!html.includes('ZONOへの12時到着が難しければ省略'));

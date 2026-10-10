@@ -28,7 +28,7 @@
     const value = type => parts.find(part => part.type === type).value;
     const date = `${value('year')}-${value('month')}-${value('day')}`;
     const title = document.querySelector('[data-status-title]');
-    if (date < document.body.dataset.tripDate) title.textContent = '明日：4店の個別営業と道路を確認';
+    if (date < document.body.dataset.tripDate) title.textContent = '明日：ZONO12時受取・営業と道路を確認';
     else if (date > document.body.dataset.tripDate) title.textContent = '10/11の旅程・準備記録';
     else {
       const now = Number(value('hour')) * 60 + Number(value('minute'));

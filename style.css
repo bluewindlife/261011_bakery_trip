@@ -87,3 +87,11 @@ body{font-size:16px}.plan-note,.detail-box li,.shop-reason,.candidate-card p{fon
 @media(max-width:600px){.route-overview{grid-template-columns:repeat(2,minmax(0,1fr))}.route-overview>div{padding:.85rem .7rem}}
 
 .gallery.tanuki-gallery{grid-template-columns:1fr}
+
+/* Alternative visit windows and confirmed pickup: v1.4.0 */
+.candidate-time,.candidate-assumption{border:1px solid #dfc7b6;background:#f8eee5;border-radius:12px;padding:14px;margin:14px 0}
+.candidate-time>span{display:block;font-size:.72rem;color:var(--muted);margin-bottom:5px}
+.candidate-time>strong{display:block;color:var(--accent);font-size:1.25rem;line-height:1.5}
+.candidate-time p,.candidate-assumption p{font-size:.82rem;margin:7px 0 0;line-height:1.75}
+.candidate-assumption{margin:0 0 20px}.candidate-time{margin-top:0}
+[id^="candidate-"],#shop-tanuki{scroll-margin-top:110px}
